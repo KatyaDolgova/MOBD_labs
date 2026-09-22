@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="marketplace-er" id="marketplace-er">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t_users" value="users" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="240" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="t_users_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_users">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_users_r1" value="full_name : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_users_r2" value="email : TEXT UNIQUE NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_users_r3" value="phone : TEXT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_users_r4" value="role : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_users_r5" value="created_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_users">
+          <mxGeometry y="130" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_sellers" value="sellers" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="240" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="t_sellers_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_sellers">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_sellers_r1" value="FK user_id : BIGINT UNIQUE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_sellers">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_sellers_r2" value="store_name : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_sellers">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_sellers_r3" value="description : TEXT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_sellers">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_sellers_r4" value="created_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_sellers">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_categories" value="categories" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#d5e8d4;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="240" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="t_categories_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_categories">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_categories_r1" value="FK parent_id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_categories">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_categories_r2" value="name : TEXT UNIQUE NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_categories">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products" value="products" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#d5e8d4;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="40" width="240" height="234" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_products">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r1" value="FK seller_id : BIGINT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_products">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r2" value="FK category_id : BIGINT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_products">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r3" value="title : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_products">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r4" value="description : TEXT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_products">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r5" value="price : NUMERIC(12,2)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_products">
+          <mxGeometry y="130" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r6" value="is_active : BOOLEAN" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_products">
+          <mxGeometry y="156" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_products_r7" value="created_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_products">
+          <mxGeometry y="182" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_stock" value="stock" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#d5e8d4;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="240" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="t_stock_r0" value="PK product_id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_stock">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_stock_r1" value="quantity : INTEGER" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_stock">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_stock_r2" value="updated_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_stock">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_carts" value="carts" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffe6cc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="300" width="240" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="t_carts_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_carts">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_carts_r1" value="FK user_id : BIGINT UNIQUE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_carts">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_carts_r2" value="created_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_carts">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_cart_items" value="cart_items" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffe6cc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="300" width="240" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="t_cart_items_r0" value="PK cart_id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_cart_items">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_cart_items_r1" value="PK product_id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_cart_items">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_cart_items_r2" value="quantity : INTEGER NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_cart_items">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_orders" value="orders" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="300" width="240" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="t_orders_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_orders">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_orders_r1" value="FK user_id : BIGINT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_orders">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_orders_r2" value="status : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_orders">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_orders_r3" value="total_amount : NUMERIC(12,2)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_orders">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_orders_r4" value="created_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_orders">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_order_items" value="order_items" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="240" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="t_order_items_r0" value="PK order_id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_order_items">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_order_items_r1" value="PK product_id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_order_items">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_order_items_r2" value="quantity : INTEGER NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_order_items">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_order_items_r3" value="unit_price : NUMERIC(12,2)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_order_items">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_payments" value="payments" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="540" width="240" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="t_payments_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_payments">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_payments_r1" value="FK order_id : BIGINT UNIQUE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_payments">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_payments_r2" value="amount : NUMERIC(12,2)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_payments">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_payments_r3" value="status : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_payments">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_payments_r4" value="paid_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_payments">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_reviews" value="reviews" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#f8cecc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="540" width="240" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="t_reviews_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_reviews">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_reviews_r1" value="FK user_id : BIGINT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_reviews">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_reviews_r2" value="FK product_id : BIGINT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_reviews">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_reviews_r3" value="score : INTEGER" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_reviews">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_reviews_r4" value="comment : TEXT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_reviews">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_reviews_r5" value="created_at : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_reviews">
+          <mxGeometry y="130" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_addresses" value="addresses" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="540" width="240" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="t_addresses_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_addresses">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_addresses_r1" value="FK user_id : BIGINT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_addresses">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_addresses_r2" value="city : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_addresses">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_addresses_r3" value="street : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_addresses">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_addresses_r4" value="house : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_addresses">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_addresses_r5" value="apartment : TEXT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_addresses">
+          <mxGeometry y="130" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_deliveries" value="deliveries" style="swimlane;html=1;startSize=26;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#666666;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="820" width="240" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="t_deliveries_r0" value="PK id : BIGINT" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;fontStyle=1;" vertex="1" parent="t_deliveries">
+          <mxGeometry y="0" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_deliveries_r1" value="FK order_id : BIGINT UNIQUE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_deliveries">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_deliveries_r2" value="FK address_id : BIGINT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_deliveries">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_deliveries_r3" value="delivery_status : TEXT NOT NULL" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_deliveries">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t_deliveries_r4" value="delivery_date : TIMESTAMPTZ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;whiteSpace=nowrap;fontSize=11;" vertex="1" parent="t_deliveries">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_sellers" target="t_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="t_categories" target="t_categories">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_products" target="t_sellers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_products" target="t_categories">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_stock" target="t_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_carts" target="t_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_cart_items" target="t_carts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_cart_items" target="t_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_orders" target="t_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_order_items" target="t_orders">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_order_items" target="t_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_payments" target="t_orders">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_reviews" target="t_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_reviews" target="t_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_addresses" target="t_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_deliveries" target="t_orders">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;rounded=0;fontSize=10;" edge="1" parent="1" source="t_deliveries" target="t_addresses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
