@@ -1,22 +1,5 @@
--- =====================================================================
--- Лабораторная работа №1. Проектирование и создание структуры БД
--- База данных маркетплейса (marketplace)
---
--- Перед выполнением скрипта создайте базу данных (одна команда, вне
--- транзакции, выполняется отдельно от остального скрипта):
---
---   CREATE DATABASE marketplace;
---
--- Далее подключитесь к ней (psql: \c marketplace) и выполните этот файл:
---
---   psql -U postgres -d marketplace -f schema.sql
---
--- Скрипт идемпотентен: повторный запуск полностью пересоздаёт схему.
--- =====================================================================
-
--- ---------------------------------------------------------------------
 -- Удаление существующих объектов (для воспроизводимого пересоздания)
--- ---------------------------------------------------------------------
+
 DROP TABLE IF EXISTS deliveries CASCADE;
 DROP TABLE IF EXISTS addresses CASCADE;
 DROP TABLE IF EXISTS reviews CASCADE;
@@ -31,9 +14,8 @@ DROP TABLE IF EXISTS categories CASCADE;
 DROP TABLE IF EXISTS sellers CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 
--- ---------------------------------------------------------------------
--- 1. users — учётные записи площадки
--- ---------------------------------------------------------------------
+
+-- 1. users - пользователи
 CREATE TABLE users (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     full_name   TEXT NOT NULL,
@@ -44,9 +26,7 @@ CREATE TABLE users (
     created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- ---------------------------------------------------------------------
--- 2. sellers — магазины продавцов (1:1 с пользователем-владельцем)
--- ---------------------------------------------------------------------
+-- 2. sellers - магазины продавцов (1:1 с пользователем-владельцем)
 CREATE TABLE sellers (
     id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id      BIGINT NOT NULL UNIQUE
@@ -56,18 +36,15 @@ CREATE TABLE sellers (
     created_at   TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- ---------------------------------------------------------------------
--- 3. categories — иерархический классификатор товаров (самоссылка)
--- ---------------------------------------------------------------------
+-- 3. categories - иерархический классификатор товаров (самоссылка)
+
 CREATE TABLE categories (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     parent_id   BIGINT REFERENCES categories(id) ON DELETE RESTRICT,
     name        TEXT NOT NULL UNIQUE
 );
 
--- ---------------------------------------------------------------------
--- 4. products — карточки товаров
--- ---------------------------------------------------------------------
+-- 4. products - карточки товаров
 CREATE TABLE products (
     id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     seller_id    BIGINT NOT NULL
@@ -81,9 +58,7 @@ CREATE TABLE products (
     created_at   TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- ---------------------------------------------------------------------
--- 5. stock — складские остатки (1:1 с товаром)
--- ---------------------------------------------------------------------
+-- 5. stock - складские остатки (1:1 с товаром)
 CREATE TABLE stock (
     product_id  BIGINT PRIMARY KEY
                     REFERENCES products(id) ON DELETE CASCADE,
@@ -91,9 +66,7 @@ CREATE TABLE stock (
     updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- ---------------------------------------------------------------------
--- 6. carts — корзина пользователя (1:1 с пользователем)
--- ---------------------------------------------------------------------
+-- 6. carts - корзина пользователя (1:1 с пользователем)
 CREATE TABLE carts (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id     BIGINT NOT NULL UNIQUE
@@ -101,9 +74,8 @@ CREATE TABLE carts (
     created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- ---------------------------------------------------------------------
--- 7. cart_items — позиции корзины (ассоциативная таблица carts <-> products)
--- ---------------------------------------------------------------------
+-- 7. cart_items - позиции корзины (ассоциативная таблица carts <-> products)
+
 CREATE TABLE cart_items (
     cart_id     BIGINT NOT NULL REFERENCES carts(id) ON DELETE CASCADE,
     product_id  BIGINT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
@@ -111,23 +83,19 @@ CREATE TABLE cart_items (
     PRIMARY KEY (cart_id, product_id)
 );
 
--- ---------------------------------------------------------------------
--- 8. orders — оформленные заказы
--- ---------------------------------------------------------------------
+-- 8. orders - оформленные заказы
 CREATE TABLE orders (
     id            BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id       BIGINT NOT NULL
                       REFERENCES users(id) ON DELETE RESTRICT,
     status        TEXT NOT NULL DEFAULT 'created'
-                      CHECK (status IN ('created', 'paid', 'shipped', 'delivered', 'cancelled')),
+                      CHECK (status IN ('created', 'paid', 'sent', 'delivered', 'cancelled')),
     total_amount  NUMERIC(12,2) NOT NULL DEFAULT 0 CHECK (total_amount >= 0),
     created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- ---------------------------------------------------------------------
--- 9. order_items — позиции заказа (ассоциативная таблица orders <-> products,
+-- 9. order_items - позиции заказа (ассоциативная таблица orders <-> products,
 --    связь «многие-ко-многим»)
--- ---------------------------------------------------------------------
 CREATE TABLE order_items (
     order_id    BIGINT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
     product_id  BIGINT NOT NULL REFERENCES products(id) ON DELETE RESTRICT,
@@ -136,9 +104,7 @@ CREATE TABLE order_items (
     PRIMARY KEY (order_id, product_id)
 );
 
--- ---------------------------------------------------------------------
--- 10. payments — оплата заказа (1:0..1 с заказом)
--- ---------------------------------------------------------------------
+-- 10. payments - оплата заказа (1:0..1 с заказом)
 CREATE TABLE payments (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     order_id    BIGINT NOT NULL UNIQUE
@@ -149,9 +115,7 @@ CREATE TABLE payments (
     paid_at     TIMESTAMPTZ
 );
 
--- ---------------------------------------------------------------------
--- 11. reviews — отзывы покупателей о товарах
--- ---------------------------------------------------------------------
+-- 11. reviews - отзывы покупателей о товарах
 CREATE TABLE reviews (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id     BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -162,9 +126,7 @@ CREATE TABLE reviews (
     UNIQUE (user_id, product_id)
 );
 
--- ---------------------------------------------------------------------
--- 12. addresses — адреса доставки пользователя
--- ---------------------------------------------------------------------
+-- 12. addresses - адреса доставки пользователя
 CREATE TABLE addresses (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id     BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -174,9 +136,7 @@ CREATE TABLE addresses (
     apartment   TEXT
 );
 
--- ---------------------------------------------------------------------
--- 13. deliveries — доставка заказа (1:0..1 с заказом)
--- ---------------------------------------------------------------------
+-- 13. deliveries - доставка заказа (1:0..1 с заказом)
 CREATE TABLE deliveries (
     id               BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     order_id         BIGINT NOT NULL UNIQUE
@@ -188,17 +148,3 @@ CREATE TABLE deliveries (
     delivery_date    TIMESTAMPTZ
 );
 
--- ---------------------------------------------------------------------
--- Вспомогательные индексы под внешние ключи (ускоряют JOIN и удаление
--- родительских строк; сами FK индекс автоматически не создают)
--- ---------------------------------------------------------------------
-CREATE INDEX idx_sellers_user_id        ON sellers(user_id);
-CREATE INDEX idx_categories_parent_id   ON categories(parent_id);
-CREATE INDEX idx_products_seller_id     ON products(seller_id);
-CREATE INDEX idx_products_category_id   ON products(category_id);
-CREATE INDEX idx_carts_user_id          ON carts(user_id);
-CREATE INDEX idx_orders_user_id         ON orders(user_id);
-CREATE INDEX idx_order_items_product_id ON order_items(product_id);
-CREATE INDEX idx_reviews_product_id     ON reviews(product_id);
-CREATE INDEX idx_addresses_user_id      ON addresses(user_id);
-CREATE INDEX idx_deliveries_address_id  ON deliveries(address_id);
