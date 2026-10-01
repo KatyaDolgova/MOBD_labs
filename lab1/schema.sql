@@ -1,5 +1,4 @@
 -- Удаление существующих объектов (для воспроизводимого пересоздания)
-
 DROP TABLE IF EXISTS deliveries CASCADE;
 DROP TABLE IF EXISTS addresses CASCADE;
 DROP TABLE IF EXISTS reviews CASCADE;
@@ -13,7 +12,6 @@ DROP TABLE IF EXISTS products CASCADE;
 DROP TABLE IF EXISTS categories CASCADE;
 DROP TABLE IF EXISTS sellers CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-
 
 -- 1. users - пользователи
 CREATE TABLE users (
@@ -147,4 +145,3 @@ CREATE TABLE deliveries (
                          CHECK (delivery_status IN ('pending', 'in_transit', 'delivered', 'returned')),
     delivery_date    TIMESTAMPTZ
 );
-
